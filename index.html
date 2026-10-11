@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Universe That Blooms for You, Thirandee 💜</title>
+<meta name="theme-color" content="#0d0620">
+
+<!-- Optional fonts (the page still looks lovely offline thanks to fallbacks) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ============ BACKGROUND LAYERS ============ -->
+<div class="aurora a1" aria-hidden="true"></div>
+<div class="aurora a2" aria-hidden="true"></div>
+<div class="aurora a3" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<noscript><p class="noscript">This little universe needs JavaScript to bloom 💜</p></noscript>
+
+<!-- ============ SCENE 1 · INTRO ============ -->
+<section id="intro" class="scene intro" aria-label="Welcome">
+  <div class="intro-inner">
+    <p id="introLine1" class="intro-1 reveal"></p>
+    <p id="introLine2" class="intro-2 reveal"></p>
+    <button id="enterBtn" class="btn big glow reveal" type="button"></button>
+  </div>
+</section>
+
+<!-- ============ SCENE 2 · THE GARDEN ============ -->
+<main id="garden" class="scene garden hidden" aria-label="The garden">
+  <div class="g-scroll">
+    <header class="g-head">
+      <h1 id="gTitle"></h1>
+      <p id="gSub"></p>
+    </header>
+
+    <section class="stage" id="stage">
+      <svg id="stems" class="stems" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div id="bouquet" class="bouquet"></div>
+      <div class="hero closed" id="hero">
+        <button id="heroBtn" class="hero-btn" type="button" aria-label="Touch the glowing flower to make it bloom"></button>
+        <span id="heroHint" class="hero-hint"></span>
+      </div>
+      <span class="bow" id="bow" aria-hidden="true">🎀</span>
+    </section>
+
+    <p id="bouquetNote" class="note reveal"></p>
+
+    <div class="actions">
+      <button id="bloomBtn" class="btn" type="button"></button>
+      <button id="letterBtn" class="btn" type="button"></button>
+      <button id="gameBtn" class="btn" type="button"></button>
+    </div>
+
+    <button id="finaleBtn" class="btn big glow finale-btn hidden" type="button"></button>
+    <p id="unlockHint" class="unlock-hint"></p>
+  </div>
+
+  <div id="meadow" class="meadow" aria-label="A meadow of secret flowers"></div>
+  <div class="counter" id="counter" aria-live="polite">💜 <b id="countNum">0</b> found</div>
+</main>
+
+<!-- ============ MESSAGE TOAST ============ -->
+<div id="toast" class="toast" role="status" aria-live="polite">
+  <span class="t-ico">💜</span>
+  <div><small>A tiny message from the garden</small><p id="toastText"></p></div>
+</div>
+
+<!-- ============ LETTER MODAL ============ -->
+<div id="letterModal" class="modal" aria-hidden="true" role="dialog" aria-label="A love letter">
+  <div class="modal-bg" data-close></div>
+  <div class="letter-wrap">
+    <div id="envelope" class="envelope" role="button" tabindex="0" aria-label="Open the envelope" data-focus>
+      <div class="env-back"></div>
+      <div class="env-paper"></div>
+      <div class="env-front"></div>
+      <div class="env-flap"><span class="seal">💜</span></div>
+    </div>
+    <p id="envHint" class="env-hint">Tap the envelope ✉️</p>
+
+    <article id="letterPaper" class="paper">
+      <button class="x" type="button" data-close aria-label="Close letter">✕</button>
+      <div id="letterBody"></div>
+    </article>
+  </div>
+</div>
+
+<!-- ============ GAME MODAL ============ -->
+<div id="gameModal" class="modal" aria-hidden="true" role="dialog" aria-label="Sweetness test">
+  <div class="modal-bg" data-close></div>
+  <div class="card game">
+    <button class="x" type="button" data-close aria-label="Close game" data-focus>✕</button>
+    <div id="gameBody"></div>
+  </div>
+</div>
+
+<!-- ============ SCENE 3 · FINALE ============ -->
+<section id="finale" class="finale hidden" aria-label="The final scene">
+  <div class="finale-inner">
+    <svg id="constellation" class="cons" viewBox="0 0 200 180" aria-label="A heart-shaped constellation"></svg>
+    <p id="fLine1" class="f-main reveal"></p>
+    <p id="fLine2" class="f-sub reveal"></p>
+    <p id="fSign" class="f-sign reveal"></p>
+    <div id="fActions" class="f-actions reveal">
+      <button id="replayBtn" class="btn" type="button">↻ Replay the magic</button>
+      <button id="backBtn" class="btn" type="button">Back to the garden 🌸</button>
+    </div>
+  </div>
+  <div id="fField" class="field" aria-hidden="true"></div>
+</section>
+
+<!-- ============ MUSIC TOGGLE (never autoplays) ============ -->
+<button id="musicBtn" class="music" type="button" aria-pressed="false" aria-label="Toggle soft background music">
+  <span id="musicIco">🎵</span><span id="musicTxt">Music off</span>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
